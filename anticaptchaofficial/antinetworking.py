@@ -75,14 +75,14 @@ class antiNetworking:
         else:
             if task_check["errorId"] == 0:
                 if task_check["status"] == "processing":
-                    self.log("task is still processing")
+                    self.log(f"task {self.task_id} is still processing")
                     return self.wait_for_result(max_seconds, current_second+1)
                 if task_check["status"] == "ready":
-                    self.log("task solved")
+                    self.log(f"task {self.task_id} solved")
                     return task_check
             else:
                 self.error_code = task_check["errorCode"]
-                self.err_string = "API error "+task_check["errorCode"] + ": "+task_check["errorDescription"]
+                self.err_string = f"API error for {self.task_id} "+task_check["errorCode"] + ": "+task_check["errorDescription"]
                 self.log(self.err_string)
                 return 0
 
