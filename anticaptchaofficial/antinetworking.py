@@ -3,7 +3,7 @@ import json
 import urllib3
 from datetime import datetime
 import time
-
+import logging
 default_headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
 session = requests.Session()
@@ -158,7 +158,7 @@ class antiNetworking:
 
     def log(self, msg):
         if self.is_verbose:
-            print(msg)
+            logging.debug(msg)
 
     def get_time_stamp(self):
         return int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds())
